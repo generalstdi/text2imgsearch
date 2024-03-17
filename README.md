@@ -95,7 +95,19 @@ There are some files in the root path that are useful for running the whole serv
 In the __notebooks/EDA.ipynb__ file, you can view a brief EDA of the dataset.
 ## 5. Evaluation
 ### 5.1 Evaluation metrics
-### 5.2 Evaluation results
+Some evaluation metrics for information retrieval systems like this semantic search engine are:
+* __Mean Reciprocal Rank (MRR)__ is a ranking quality metric. It considers the position of the first relevant item in the ranked list.
+You can calculate MRR as the mean of Reciprocal Ranks across all users or queries. 
+A Reciprocal Rank is the inverse of the position of the first relevant item. If the first relevant item is in position 2, the reciprocal rank is 1/2. 
+* __Normalized Discounted Cumulative Gain (NDCG)__ is a ranking quality metric. It compares rankings to an ideal order where all relevant items are at the top of the list.
+NDCG at K is determined by dividing the Discounted Cumulative Gain (DCG) by the ideal DCG representing a perfect ranking. 
+DCG measures the total item relevance in a list with a discount that helps address the diminishing value of items further down the list.
+* __Recall at K__ measures the proportion of correctly identified relevant items in the top K recommendations out of the total number of relevant items in the dataset. In simpler terms, it indicates how many of the relevant items you could successfully find.
+* __Precision at K__ is the ratio of correctly identified relevant items within the total recommended items inside the K-long list. Simply put, it shows how many recommended or retrieved items are genuinely relevant.
+
+### 5.2 Evaluation Notebook
+For more information about evaluating this semantic search engine please have a look at the
+__notebooks/Evaluation.ipynb__ notebook.
 
 
 ## 6. Future work
@@ -109,3 +121,4 @@ In the __notebooks/EDA.ipynb__ file, you can view a brief EDA of the dataset.
 so anyone can add data after the initialization of the DB.
 - [ ] Convert to ONNX the CLIP model, to avoid utilize torch package. It will boost the inference time of the model,
 and it will decrease the size in GBs of the service.
+- [ ] A more thorough evaluation notebook.
