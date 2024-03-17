@@ -1,0 +1,28 @@
+#!/bin/bash
+set -x
+
+shutdown_gracefully() {
+  declare f=$1
+  pid=$([ -s "$f" ] && cat $f || echo 0)
+  if [ $pid -ne 0 ]; then
+    if groups | grep "\<sudo\>" &> /dev/null; then
+      sudo kill -SIGTERM $pid
+    else
+      kill -SIGTERM $pid
+    fi
+    echo "$pid is terminated."
+  else
+    echo "No PID to terminate."
+  fi
+}
+
+trap term SIGTERM
+gunicorn_pid='/tmp/gunicorn.pid'
+term() {
+  local pid # to call shutdown_gracefully#pid variable
+  shutdown_gracefully $gunicorn_pid
+  wait $pid
+
+  exit 143; # 128 + 15 -- SIGTERM
+}
+gunicorn -c python:img2textsemengine.api.api_cfg.gunicorn_cfg -k uvicorn.workers.UvicornWorker img2textsemengine.api.main:app & wait
