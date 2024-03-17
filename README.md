@@ -105,3 +105,7 @@ In the __notebooks/EDA.ipynb__ file, you can view a brief EDA of the dataset.
 - [ ] Dockerize the application
 - [ ] Adjust the images so all of them will have the same dimensions.
 - [ ] Add nginx proxy server
+- [ ] Now, it supports inserting data only at once. It will be updated
+so anyone can add data after the initialization of the DB.
+- [ ] Convert to ONNX the CLIP model, to avoid utilize torch package. It will boost the inference time of the model,
+and it will decrease the size in GBs of the service.
