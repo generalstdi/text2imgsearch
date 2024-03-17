@@ -1,0 +1,9 @@
+qdrant:
+  host: "localhost"
+  port: 6333
+  collection_name: "coco_captions"
+vector_names:
+  text_vector_name: "text"
+  img_vector_name: "image"
+model:
+  hf_model: "openai/clip-vit-base-patch32"

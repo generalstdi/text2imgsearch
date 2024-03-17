@@ -1,0 +1,11 @@
+qdrant:
+  host: "localhost"
+  port: 6333
+  collection_name: "coco_captions"
+  caption_payload_name: "possible_answers"
+data:
+  dataset_folder: "dataset"
+  dataset_file: "sample.jsonl"
+hf_model: "openai/clip-vit-base-patch32"
+vectors:
+  image_vector_size: 512
