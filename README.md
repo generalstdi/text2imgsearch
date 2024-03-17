@@ -122,4 +122,3 @@ so anyone can add data after the initialization of the DB.
 - [ ] Convert to ONNX the CLIP model, to avoid utilize torch package. It will boost the inference time of the model,
 and it will decrease the size in GBs of the service.
 - [ ] A more thorough evaluation notebook.
-- 
